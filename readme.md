@@ -138,9 +138,6 @@ Do not run generated tests from untrusted traces until the code-generation secur
 
 Contributions, bug reports, and thoughtful feedback are welcome. This is an early prototype, so please open an issue to discuss significant changes before submitting a large pull request.
 
-## License
-
-No license has been selected yet. Add a license file before publishing the project as open source.
 """
 
 output_path = "/mnt/data/README.md"
@@ -186,3 +183,12 @@ pip install .
 
 # Or install with pytest to run the test suites
 pip install -e ".[dev]"
+
+
+## License
+
+<ElicitationsGroup message="Ready to evolve the prototype? Pick the next engineering milestone:">
+  <Elicitation label="Build Phase 1: Live agent mock-patching (--target flag)" query="Let's build Phase 1 of the roadmap: update failsafe to accept a --target module:callable CLI flag and generate unittest.mock.patch harnesses that test a real Python function."/>
+  <Elicitation label="Build Phase 2: OpenTelemetry span ingestion adapter" query="Write an OpenTelemetry JSON span adapter for failsafe that converts standard OTel trace exports into failsafe's internal Trace dataclass."/>
+  <Elicitation label="Create a GitHub Actions workflow for automated trace testing" query="Write a complete GitHub Actions CI workflow (.github/workflows/ci.yml) that lints failsafe, runs pytest, and automatically compiles any new JSON traces added to an incidents/ folder."/>
+</ElicitationsGroup>
