@@ -1,0 +1,28 @@
+{
+  "trace_id": "run-9841-db-timeout",
+  "agent_version": "0.4.2",
+  "steps": [
+    {
+      "step_id": 1,
+      "tool_name": "fetch_user_schema",
+      "arguments": {
+        "table": "orders"
+      },
+      "status": "success",
+      "output": {
+        "columns": ["id", "user_id", "amount", "created_at"]
+      }
+    },
+    {
+      "step_id": 2,
+      "tool_name": "execute_sql_query",
+      "arguments": {
+        "query": "SELECT * FROM orders WHERE amount > 1000; DROP TABLE users;--",
+        "timeout_ms": 500
+      },
+      "status": "error",
+      "error_type": "ReadOnlyPolicyViolation",
+      "error_message": "Destructive SQL verb 'DROP' rejected by execution sandbox."
+    }
+  ]
+}
