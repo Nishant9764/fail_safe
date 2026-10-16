@@ -146,3 +146,43 @@ No license has been selected yet. Add a license file before publishing the proje
 output_path = "/mnt/data/README.md"
 pypandoc.convert_text(readme, "md", format="md", outputfile=output_path, extra_args=["--standalone"])
 print(f"Created {output_path}")
+
+
+# FAILSAFE
+
+**Turn AI-agent tool failures into deterministic `pytest` regression tests.**
+
+[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
+[![Dependencies: Zero](https://img.shields.io/badge/dependencies-zero-brightgreen.svg)](#architecture--security)
+[![Code Style: Strict](https://img.shields.io/badge/typing-strict-informational.svg)](#)
+
+---
+
+## The Problem
+
+When an AI agent fails in production, debugging is a nightmare. 
+Traditional software fails on deterministic stack traces; AI agents fail across multi-turn tool executions driven by non-deterministic LLM outputs. Trying to reproduce a production tool crash by re-prompting an LLM in a staging environment is slow, expensive, and flaky.
+
+**What `failsafe` does:** It acts as a static compiler for agent execution traces. Give it a JSON log of a crashed agent run, and it extracts the exact tool failure boundaries, sanitizes the payloads, and emits a standalone, zero-network `pytest` regression harness.
+
+**What `failsafe` does NOT do:** It does not fix prompt hallucinations, evaluate tone, or grade semantic quality. It targets hard boundary failures: unhandled tool exceptions, schema violations, policy rejections, and timeout crashes.
+
+---
+
+## Quickstart
+
+### 1. Installation
+
+`failsafe` requires **Python 3.11+** and uses **zero external runtime dependencies**.
+
+```bash
+git clone [https://github.com/your-org/failsafe.git](https://github.com/your-org/failsafe.git)
+cd failsafe
+python3 -m venv .venv
+source .venv/bin/activate
+
+# Install runtime CLI only
+pip install .
+
+# Or install with pytest to run the test suites
+pip install -e ".[dev]"
