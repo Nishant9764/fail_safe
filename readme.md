@@ -134,10 +134,6 @@ Do not run generated tests from untrusted traces until the code-generation secur
 - [ ] Document the precise behavior and limitations of generated replay tests.
 - [ ] Explore adapters for testing real agent tool wrappers and error handling.
 
-## Contributing
-
-Contributions, bug reports, and thoughtful feedback are welcome. This is an early prototype, so please open an issue to discuss significant changes before submitting a large pull request.
-
 """
 
 output_path = "/mnt/data/README.md"
@@ -183,6 +179,11 @@ pip install .
 
 # Or install with pytest to run the test suites
 pip install -e ".[dev]"
+```
+
+## Contributing
+
+Contributions, bug reports, and thoughtful feedback are welcome. This is an early prototype, so please open an issue to discuss significant changes before submitting a large pull request.
 
 
 ## License
