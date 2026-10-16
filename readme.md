@@ -1,6 +1,4 @@
-import pypandoc
-
-readme = """# FAILSAFE
+## FAILSAFE
 
 **Turn AI-agent tool failures into repeatable tests.**
 
